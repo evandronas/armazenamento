@@ -1,0 +1,84 @@
+﻿EAK-5089 - Inclusão de Hostname no log do binário
+
+roteiro GIT
+
+criar diretorio
+mkdir treinoGit
+cd treinoGit
+
+clonar
+git clone http://gitlab.prd.useredecloud/SW75/autorizador/aplicacao/online/fe-pos.git
+cd fe-pos
+
+clonar as dependências
+git submodule update --init --recursive
+
+verificar as branchs
+git branch --all
+
+mudar para a branch develop
+git checkout develop
+git branch --all
+
+criar a branch davi na máquina local
+git checkout -b davi
+
+colocar a branch davi no servidor remoto
+git push origin davi
+
+sincronizar a máquina (trazer da remota pra local)
+git fetch
+
+deletar a branch na máquina local
+git branch -D davi
+
+verificar que a branch continua existindo no servidor remoto
+git branch --all
+
+deletar a branch no servidor remoto
+git push origin --delete davi
+
+verificar que a branch morreu
+git branch --all
+só o fetch não mostra o que foi removido
+git fetch
+git branch --all
+tem que usar o fetch --prune pra "podar" o que já foi eliminado
+git fetch --prune
+git branch --all
+
+update num arquivo
+vi lista_POS
+
+verificar a diferença entre repositórios
+git status
+git diff
+
+adicionou arquivo novo e o alterado no repositório LOCAL
+git add teste_davi
+git status
+git add lista_POS
+git status
+
+conferir a diferença entre o remoto e o local
+git diff --cached
+
+subir a branch para o repositório LOCAL
+git commit -m "adicionado teste_davi e incluido davi em lista_POS"
+git status
+
+conferir a diferença com outra branch
+git diff develop
+git log
+
+subir a branch para o servidor REMOTO
+gitk --all
+git push origin davi
+git branch --all
+
+
+comando para transferir origem da branch e dar o push
+git fetch;git rebase --onto origin/dev/AM277042 dev/AM278011;git push origin feature/EAK-5440 -f
+
+
+git pull origin develop

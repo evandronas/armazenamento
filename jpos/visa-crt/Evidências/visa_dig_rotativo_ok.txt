@@ -1,0 +1,141 @@
+PDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
+$ date
+Tue May 10 09:11:13 -03 2022
+PDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
+$ go pdv localhost 8510 visa_dig_rotativo.jpos
+/home/741375/sw-bin/go: line 166: /home/741375/tmp/.jposhistory: No such file or directory
+Sending MSG visa_dig_rotativo.jpos to localhost:8510 using jPOS
+=============================================================================================================
+/usr/bin/java -jar /home/741375/bin/jPOS_v2.jar -c/home/741375/sw-bin/cfg/jPDVinac.cfg -s/home/741375/bin/db/ -Ilocalhost -P8510 -mvisa_dig_rotativo.jpos -T30000
+jPOSfw v3.1.5 - 01/01/2015 - @12600 - Copyright rcamargo
+
+Cleaning up channel successfully
+
+2022-05-10 09:11:40.733
+*** visa_dig_rotativo.jpos ******************************************************************************
+
+[#0] 2022-05-10 09:11:41.007 --------------------------------------------------------------------------------
+Sending 302 bytes [12e]
+01 2c 60 01 60 45 e5 f6 f9 f3 f4 f6 f9 f0 f8 f2 f2 f5 f6 f0 f8 f0 00 00  |  ..-.-.V693469082256080..
+50 f0 f2 f0 f0 c6 f2 f3 c3 f0 f4 f0 f1 f0 f0 c3 f3 f8 f0 f0 f8 f0 f0 f0  |  &0200F23C040100C38008000
+f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f3 f0 f1 f6 f4 f1 c3 f9 c3 f2 f1 f8 f0  |  00000000000301641C9C2180
+f2 f6 f4 f2 f7 f7 f7 f0 f0 f3 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f4 f5 f6 f0  |  264277700300000000004560
+f0 f0 f5 f1 f0 f1 f2 f1 f1 f4 f0 f7 f2 f6 f8 f5 f2 f0 f9 f1 f1 f4 f0 f0  |  005101211407268520911400
+f5 f1 f0 f2 f5 f0 f6 f0 f1 f1 f0 f6 f6 f0 f8 f8 f1 f9 c6 c2 f2 f7 f0 f3  |  510250601106608819FB2703
+f9 f1 f0 f6 f0 f2 f0 f4 f0 f0 f2 f5 f1 f2 f5 f7 f2 f0 f6 f5 f0 f0 f3 f0  |  910602040025125720650030
+f2 f1 c3 d3 f0 f5 f0 f0 40 40 40 40 7a d7 f1 f0 f6 81 f0 f4 40 40 40 f0  |  21CL0500    :P106a04   0
+f1 f5 f0 f1 f6 f0 c3 f1 f9 c6 f8 f4 f5 f3 f9 f5 f4 c3 c2 f6 c6 f0 f2 f0  |  150160C19F8453954CB6F020
+f0 f1 f0 f0 f1 f2 40 f1 f6 f3 40 f1 f0 f0 f2 f5 d9 f1 40 40 40 e2 f6 40  |  010012 163 10025R1   S6
+40 40 40 40 40 40 40 40 40 40 40 40 40 d5 e2 f0 f3 f0 f7 f6 f0 f1 f1 f0  |               NS030760110
+f0 f0 f0 f0 f0 f0 f0 f0 f0 f3 f0 f0 f7 d3 f0 f6 f0 f3 e2 c5 f0 f1 f5 f1  |  0000000003007L0603SE0151
+f2 f3 f4 f5 f6 f7 f8 f9 f0 f1 f2 f3 f4 f5                                |  23456789012345
+Message Type : 0200
+BITMAP [ 2 3 4 7 11 12 13 14 22 32 41 42 47 48 49 61 123 124]
+DE[002][V016] [41C9C21802642777]
+DE[003][F006] [003000]
+DE[004][F012] [000000045600]
+DE[007][F010] [0510121140]
+DE[011][F006] [726852]
+DE[012][F006] [091140]
+DE[013][F004] [0510]
+DE[014][F004] [2506]
+DE[022][F003] [011]
+DE[032][V006] [608819]
+DE[041][F008] [FB270391]
+DE[042][F015] [060204002512572]
+DE[047][V065] [003021CL0500    :P106a04   0150160C19F8453954CB6F020010012 163 10]
+DE[048][V025] [R1   S6              NS03]
+DE[049][F003] [076]
+DE[061][V011] [00000000003]
+DE[123][V007] [L0603SE]
+DE[124][V015] [123456789012345]
+
+2022-05-10 09:11:43.025 --------------------------------------------------------------------------------
+Reading 660 bytes [294]
+02 92 60 45 e5 01 60 f6 f9 f3 f4 f6 f9 f0 f8 f2 f2 f5 f6 f0 f8 f0 00 00  |  .k-.V.-693469082256080..
+50 f0 f2 f1 f0 c2 f2 f3 c1 f0 f0 f0 f1 f0 f6 c3 f0 f8 f0 f0 f4 f0 f0 f0  |  &0210B23A000106C08004000
+f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f1 f2 f0 f0 f3 f0 f0 f0 f0 f0 f0 f0 f0  |  000000000001200300000000
+f0 f0 f4 f5 f6 f0 f0 f0 f5 f1 f0 f1 f2 f1 f1 f4 f0 f7 f2 f6 f8 f5 f2 f0  |  004560005101211407268520
+f9 f1 f1 f4 f1 f0 f5 f1 f0 f0 f5 f1 f0 f1 f1 f4 f0 f3 f2 f5 f4 40 40 40  |  911410510051011403254
+40 40 f0 c1 f2 f4 f2 f8 f0 f0 c6 c2 f2 f7 f0 f3 f9 f1 f0 f6 f0 f2 f0 f4  |    0A242800FB270391060204
+f0 f0 f2 f5 f1 f2 f5 f7 f2 f0 f7 f6 f4 f7 f1 c6 40 40 40 40 40 40 40 40  |  002512572076471F
+40 40 40 40 40 40 40 40 40 d9 c5 c4 c5 40 40 40 40 40 40 40 40 40 40 40  |           REDE
+40 40 40 40 40 40 7c 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 e5 c9  |        @               VI
+e2 c1 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 c4 7c c3 d6 d4 d7  |  SA                D@COMP
+d9 7a f9 f2 f7 f0 f0 f0 f0 f1 f2 40 40 40 40 e5 c1 d3 d6 d9 7a 40 40 40  |  R:927000012    VALOR:
+40 40 40 40 f4 f5 f6 6b f0 f0 7c c5 e2 e3 c1 c2 7a f0 f0 f2 f5 f1 f2 f5  |      456,00@ESTAB:0025125
+f7 f2 40 c1 d9 c5 e9 e9 d6 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40  |  72 AREZZO
+40 7c c3 d5 d7 d1 61 c3 d7 c6 7a f1 f1 4b f7 f3 f9 4b f5 f7 f0 61 f0 f0  |   @CNPJ/CPF:11.739.570/00
+f0 f3 60 f8 f6 40 40 40 40 40 40 40 40 40 40 40 7c f1 f0 4b f0 f5 4b f2  |  03-86           @10.05.2
+f2 60 f0 f9 7a f1 f1 7a f4 f1 40 e3 c5 d9 d4 7a d7 e5 f0 f6 f0 f2 f0 f4  |  2-09:11:41 TERM:PV060204
+61 f7 f2 f6 f8 f5 f2 7c c3 c1 d9 e3 c1 d6 7a 40 a7 a7 a7 a7 a7 a7 a7 a7  |  /726852@CARTAO: xxxxxxxx
+a7 a7 a7 a7 f2 f7 f0 f3 40 40 40 40 40 e5 c1 d3 7a f0 f6 61 f2 f5 7c c1  |  xxxx2703     VAL:06/25@A
+e4 e3 d6 d9 c9 e9 c1 c3 c1 d6 7a 40 f0 c1 f2 f4 f2 f8 40 40 40 40 40 40  |  UTORIZACAO: 0A2428
+40 40 40 40 40 40 40 40 40 40 40 40 40 7c 40 40 40 40 40 d9 c5 c3 d6 d5  |               @     RECON
+c8 c5 c3 d6 40 c5 40 d7 c1 c7 c1 d9 c5 c9 40 c1 40 c4 c9 e5 c9 c4 c1 40  |  HECO E PAGAREI A DIVIDA
+40 40 40 40 7c 40 40 40 40 40 40 40 40 40 40 c1 d8 e4 c9 40 d9 c5 d7 d9  |      @          AQUI REPR
+c5 e2 c5 d5 e3 c1 c4 c1 40 40 40 40 40 40 40 40 40 40 40 7c 7c 7c 40 40  |  ESENTADA           @@@
+40 40 40 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d 6d  |     _____________________
+6d 6d 6d 6d 6d 6d 6d 40 40 40 40 40 7c 7c 40 40 40 40 40 40 40 40 40 40  |  _______     @@
+40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40 40  |      
+40 40 40 40 7c 7c f0 f1 f5 f1 f2 f3 f4 f5 f6 f7 f8 f9 f0 f1 f2 f3 f4 f5  |      @@015123456789012345
+f0 f0 f9 f9 f2 f7 f0 f0 f0 f0 f1 f2                                      |  009927000012
+Message Type : 0210
+BITMAP [ 3 4 7 11 12 13 15 32 38 39 41 42 49 62 124 127]
+DE[003][F006] [003000]
+DE[004][F012] [000000045600]
+DE[007][F010] [0510121140]
+DE[011][F006] [726852]
+DE[012][F006] [091141]
+DE[013][F004] [0510]
+DE[015][F004] [0510]
+DE[032][V011] [403254     ]
+DE[038][F006] [0A2428]
+DE[039][F002] [00]
+DE[041][F008] [FB270391]
+DE[042][F015] [060204002512572]
+DE[049][F003] [076]
+DE[062][V471] [F                 REDE                 @               VISA                D@COMPR:927000012    VALOR:       456,00@ESTAB:002512572 AREZZO                @CNPJ/CPF:11.739.570/0003-86           @10.05.22-09:11:41 TERM:PV060204/726852@CARTAO: xxxxxxxxxxxx2703     VAL:06/25@AUTORIZACAO: 0A2428                   @     RECONHECO E PAGAREI A DIVIDA     @          AQUI REPRESENTADA           @@@     ____________________________     @@                                      @@]
+DE[124][V015] [123456789012345]
+DE[127][V009] [927000012]
+..
+
+[#1] 2022-05-10 09:11:45.089 --------------------------------------------------------------------------------
+Sending 175 bytes [af]
+00 ad 60 01 60 45 e5 f6 f9 f3 f4 f6 f9 f0 f8 f2 f2 f5 f6 f0 f8 f0 00 00  |  .[-.-.V693469082256080..
+50 f0 f2 f0 f2 c2 f2 f2 f2 f0 f4 f0 f1 f0 f2 c3 f2 f8 f0 f0 f0 f0 f0 f0  |  &0202B222040102C28000000
+f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f2 f0 f0 f3 f0 f0 f0 f0 f0 f0 f0 f0  |  000000000000200300000000
+f0 f0 f4 f5 f6 f0 f0 f0 f5 f1 f0 f1 f2 f1 f1 f4 f0 f7 f2 f6 f8 f5 f2 f0  |  004560005101211407268520
+f5 f1 f0 f0 f1 f1 f0 f6 f6 f0 f8 f8 f1 f9 f0 f0 c6 c2 f2 f7 f0 f3 f9 f1  |  5100110660881900FB270391
+f0 f6 f0 f2 f0 f4 f0 f0 f2 f5 f1 f2 f5 f7 f2 f0 f2 f2 f0 f1 f5 f0 f1 f6  |  060204002512572022015016
+f0 c3 f1 f9 c6 f8 f4 f5 f3 f9 f5 f4 c3 c2 f6 c6 f0 f7 f6 f0 f0 f9 f9 f2  |  0C19F8453954CB6F07600992
+f7 f0 f0 f0 f0 f1 f2                                                     |  7000012
+Message Type : 0202
+BITMAP [ 3 4 7 11 15 22 32 39 41 42 47 49 127]
+DE[003][F006] [003000]
+DE[004][F012] [000000045600]
+DE[007][F010] [0510121140]
+DE[011][F006] [726852]
+DE[015][F004] [0510]
+DE[022][F003] [011]
+DE[032][V006] [608819]
+DE[039][F002] [00]
+DE[041][F008] [FB270391]
+DE[042][F015] [060204002512572]
+DE[047][V022] [0150160C19F8453954CB6F]
+DE[049][F003] [076]
+DE[127][V009] [927000012]
+
+bye
+PDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
+$ date
+Tue May 10 09:11:51 -03 2022
+PDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
+
+dbpdv=>  select dat_mov_tran, num_seq_unc from tbsw0030 where dat_mov_tran = '20220510' and num_seq_unc = 927000012;
+ dat_mov_tran | num_seq_unc
+--------------+-------------
+     20220510 |   927000012
+(1 row)
+
+dbpdv=>

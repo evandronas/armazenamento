@@ -1,0 +1,67 @@
+PDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
+$ date
+Tue May 10 09:27:42 -03 2022
+PDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
+$ go pdv localhost 8510 visa_mag_desfazimento_confpreaut.jpos
+/home/741375/sw-bin/go: line 166: /home/741375/tmp/.jposhistory: No such file or directory
+Sending MSG visa_mag_desfazimento_confpreaut.jpos to localhost:8510 using jPOS
+=============================================================================================================
+/usr/bin/java -jar /home/741375/bin/jPOS_v2.jar -c/home/741375/sw-bin/cfg/jPDVinac.cfg -s/home/741375/bin/db/ -Ilocalhost -P8510 -mvisa_mag_desfazimento_confpreaut.jpos -T30000
+jPOSfw v3.1.5 - 01/01/2015 - @15274 - Copyright rcamargo
+
+Cleaning up channel successfully
+
+2022-05-10 09:28:03.598
+*** visa_mag_desfazimento_confpreaut.jpos ***************************************************************
+
+[#0] 2022-05-10 09:28:03.814 --------------------------------------------------------------------------------
+Sending 553 bytes [229]
+02 27 60 01 60 45 e5 f6 f9 f3 f4 f6 f9 f0 f8 f2 f2 f5 f6 f0 f8 f0 00 00  |  ..-.-.V693469082256080..
+50 f0 f1 f0 f0 c2 f2 f3 f8 f0 f4 f0 f1 f2 f0 c5 f3 f8 f0 f0 f8 f0 f0 f0  |  &0100B238040120E38008000
+f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f3 f0 f0 f0 f3 f0 f0 f0 f0 f0 f0 f0 f0  |  000000000003000300000000
+f0 f0 f0 f8 f9 f0 f0 f0 f5 f1 f0 f0 f9 f2 f8 f0 f3 f8 f7 f2 f9 f0 f8 f0  |  000890005100928038729080
+f9 f2 f8 f0 f3 f0 f5 f1 f0 f0 f2 f1 f0 f6 f4 f5 f9 f0 f7 f7 f3 f5 f0 c6  |  92803051002106459077350F
+f0 f2 f4 f2 f9 f2 c5 f6 f8 f3 f8 c5 c5 c2 c4 f2 f1 f0 f1 f6 f2 f0 f0 f5  |  024292E6838EEBD210162005
+f0 f0 f0 f5 f3 f8 f0 f0 f0 d7 e5 f8 f1 f9 f9 f9 f9 f8 f1 f9 f9 f9 f9 f0  |  000538000PV8199998199990
+f1 f4 f2 f4 f4 f5 f1 f9 e5 c9 e5 d6 d3 d1 c2 c1 c2 f0 f2 f3 40 40 40 40  |  14244519VIVOLJBAB023
+40 40 40 40 40 40 40 e2 c1 d6 d7 e4 d3 d6 40 40 40 40 40 40 40 f0 f7 f6  |         SAOPULO       076
+f2 f6 f0 f0 f0 f3 f0 f2 f1 c3 d3 f0 f5 f0 f0 40 40 40 40 7a d7 f1 f0 f6  |  260003021CL0500    :P106
+81 f0 f4 40 40 40 f0 f1 f5 f0 f1 f6 f1 c6 c4 c3 f3 c3 f6 f0 c6 f3 f5 c6  |  a04   0150161FDC3C60F35F
+c4 f4 c3 f0 f0 f1 f6 f0 f2 f0 c6 c6 c6 c6 c6 f1 f2 f3 f4 f5 f6 f7 f8 f9  |  D4C0016020FFFFF123456789
+f2 f0 f0 f1 c3 c1 f0 f2 f0 f0 f2 f0 f1 f1 f1 f1 f1 f1 f1 f1 f1 f1 f1 f1  |  2001CA020020111111111111
+f1 f1 f1 f1 f2 f2 f2 f2 f0 f2 f6 f0 f6 f0 e2 a5 99 d7 99 89 95 83 e5 85  |  11112222026060SvrPrincVe
+99 7e 7e 7e 7e e2 a5 99 d9 85 84 85 e5 85 99 7e 7e 7e 7e 7e c3 93 89 d7  |  r====SvrRedeVer=====CliP
+99 89 95 83 e5 85 99 7e 7e 7e 7e c3 93 89 d9 85 84 85 e5 85 99 7e 7e 7e  |  rincVer====CliRedeVer===
+7e 7e f0 f2 f7 f0 f8 f7 d7 89 95 d7 81 84 d4 81 95 a4 86 81 83 a3 a4 99  |  ==027087PinPadManufactur
+85 99 7e 7e d7 89 95 d7 81 84 d4 96 84 85 93 7e 7e 7e 7e 7e 7e 7e 7e c2  |  er==PinPadModel========B
+89 82 c3 96 94 97 d7 d7 e5 85 99 7e 7e 7e 7e c2 89 82 d9 85 84 85 e5 85  |  ibCompPPVer====BibRedeVe
+99 7e 7e 7e d2 85 99 95 85 93 e5 85 99 7e 7e 7e e2 97 85 83 e5 85 99 f0  |  r===KernelVer===SpecVer0
+f2 f5 d9 f1 f1 f2 f3 e2 f3 40 40 40 40 40 40 40 40 40 40 40 40 40 40 e2  |  25R1123S3              S
+e2 f0 f3 f0 f7 f6 f0 f1 f1 f0 f0 f0 f0 f0 f0 f4 f0 f0 f0 f2 f0 f0 f7 d3  |  S0307601100000040002007L
+f0 f6 f0 f3 e2 c5 f0 f1 f6 f1 f2 f3 f4 f5 f6 f7 f8 f9 f0 f1 f2 f3 f4 f5  |  0603SE016123456789012345
+40                                                                       |      
+Message Type : 0100
+BITMAP [ 3 4 7 11 12 13 22 32 35 41 42 43 47 48 49 61 123 124]
+DE[003][F006] [003000]
+DE[004][F012] [000000008900]
+DE[007][F010] [0510092803]
+DE[011][F006] [872908]
+DE[012][F006] [092803]
+DE[013][F004] [0510]
+DE[022][F003] [021]
+DE[032][V006] [459077]
+DE[035][V035] [0F024292E6838EEBD210162005000538000]
+DE[041][F008] [PV819999]
+DE[042][F015] [819999014244519]
+DE[043][F040] [VIVOLJBAB023           SAOPULO       076]
+DE[047][V260] [003021CL0500    :P106a04   0150161FDC3C60F35FD4C0016020FFFFF1234567892001CA02002011111111111111112222026060SvrPrincVer====SvrRedeVer=====CliPrincVer====CliRedeVer=====027087PinPadManufacturer==PinPadModel========BibCompPPVer====BibRedeVer===KernelVer===SpecVer]
+DE[048][V025] [R1123S3              SS03]
+DE[049][F003] [076]
+DE[061][V011] [00000040002]
+DE[123][V007] [L0603SE]
+DE[124][V016] [123456789012345 ]
+/home/741375/PDV/tasks/acqsrv_crt_537: line 41: 14867 Segmentation fault      (core dumped) engine $ACQSRV_CRT_XML_DIR Engine.xml acqsrv_crt ACQ acqsrv_crt
+^CPDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
+$ date
+Tue May 10 09:28:11 -03 2022
+PDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]

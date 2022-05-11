@@ -1,0 +1,70 @@
+PDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
+$ date
+Tue May 10 09:19:47 -03 2022
+PDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
+$ go pdv localhost 8510 visa_chip_confpreaut.jpos
+/home/741375/sw-bin/go: line 166: /home/741375/tmp/.jposhistory: No such file or directory
+Sending MSG visa_chip_confpreaut.jpos to localhost:8510 using jPOS
+=============================================================================================================
+/usr/bin/java -jar /home/741375/bin/jPOS_v2.jar -c/home/741375/sw-bin/cfg/jPDVinac.cfg -s/home/741375/bin/db/ -Ilocalhost -P8510 -mvisa_chip_confpreaut.jpos -T30000
+jPOSfw v3.1.5 - 01/01/2015 - @14225 - Copyright rcamargo
+
+Cleaning up channel successfully
+
+2022-05-10 09:20:09.449
+*** visa_chip_confpreaut.jpos ***************************************************************************
+
+[#0] 2022-05-10 09:20:09.762 --------------------------------------------------------------------------------
+Sending 564 bytes [234]
+02 32 60 01 60 45 e5 f6 f9 f3 f4 f6 f9 f0 f8 f2 f2 f5 f6 f0 f8 f0 00 00  |  ..-.-.V693469082256080..
+50 f0 f1 f0 f0 c2 f2 f3 c3 f0 f6 f0 f1 f2 f0 c3 f3 f8 f2 f0 f8 f0 f0 f0  |  &0100B23C060120C38208000
+f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f3 f0 f0 f0 f3 f0 f0 f0 f0 f0 f0 f0 f0  |  000000000003000300000000
+f0 f0 f1 f9 f5 f0 f0 f0 f5 f1 f0 f1 f2 f2 f0 f0 f9 f5 f6 f3 f4 f0 f7 f0  |  001950005101220095634070
+f9 f2 f0 f0 f9 f0 f5 f1 f0 f2 f5 f0 f6 f0 f5 f1 f0 f0 f2 f0 f6 f4 f0 f3  |  920090510250605100206403
+f2 f5 f4 f3 f7 f4 f1 c3 f9 c3 f2 f1 f8 f0 f2 f6 f4 f2 f7 f7 f7 7e f2 f5  |  2543741C9C21802642777=25
+f0 f6 f6 f0 f0 f0 f0 f0 f0 f9 f8 f7 f6 f8 f1 f8 f0 f2 c6 c2 f2 f7 f0 f3  |  066000000987681802FB2703
+f9 f1 f0 f6 f0 f2 f0 f4 f0 f0 f2 f5 f1 f2 f5 f7 f2 f0 f7 f8 f0 f0 f3 f0  |  910602040025125720780030
+f2 f1 c3 d3 f0 f5 f0 f0 40 40 40 40 7a d7 f1 f0 f6 81 f0 f4 40 40 40 f0  |  21CL0500    :P106a04   0
+f0 f4 f0 f0 f7 f1 f4 f2 f0 f3 f0 f0 f0 f1 f5 f0 f1 f6 f0 f0 f6 f3 c5 c2  |  0400714203000150160063EB
+f0 c6 f2 c4 f3 f0 f4 f7 f3 c4 f0 f2 f0 f0 f1 f0 f0 f1 f2 40 f1 f6 f3 40  |  0F2D30473D020010012 163
+f1 f0 f0 f2 f5 d9 f1 40 40 40 e2 f6 40 40 40 40 40 40 40 40 40 40 40 40  |  10025R1   S6
+40 40 d5 e2 f0 f3 f0 f7 f6 f2 f2 f2 f9 c6 f2 f6 f0 f8 c6 c6 c5 f9 f9 f1  |    NS030762229F2608FFE991
+f4 f7 c4 c6 f7 f8 c4 c5 f7 f8 f9 c6 f2 f7 f0 f1 f8 f0 f9 c6 f1 f0 f1 f2  |  47DF78DE789F2701809F1012
+f0 f1 f1 f4 c1 f5 f0 f0 f0 f3 f0 f2 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0  |  0114A5000302000000000000
+f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 c6 c6 f9 c6 f3 f7 f0 f4 f0 f5 c2 f6 f8 f6  |  0000000000FF9F370405B686
+f3 f3 f9 c6 f3 f6 f0 f2 f0 f8 f3 f9 f9 f5 f0 f5 f8 f0 f0 f0 f0 f0 f8 f0  |  339F36020839950580000080
+f0 f0 f9 c1 f0 f3 f2 f0 f0 f5 f2 f6 f9 c3 f0 f1 f0 f0 f9 c6 f0 f2 f0 f6  |  009A032005269C01009F0206
+f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f3 f5 c6 f2 c1 f0 f2 f0 f9 f8 f6 f8 f2  |  0000000000035F2A02098682
+f0 f2 f1 f8 f0 f0 f9 c6 f1 c1 f0 f2 f0 f0 f7 f6 f9 c6 f0 f3 f0 f6 f0 f0  |  0218009F1A0200769F030600
+f0 f0 f0 f0 f0 f0 f0 f0 f0 f0 f9 c6 f3 f4 f0 f3 f4 f1 f0 f3 f0 f2 f9 c6  |  00000000009F34034103029F
+f0 f6 f0 f7 c1 f0 f0 f0 f0 f0 f0 f0 f0 f4 f3 f0 f6 f0 f0 f1 f1 f0 f0 f0  |  0607A0000000043060011000
+f0 f0 f0 f4 f0 f0 f0 f8 f0 f0 f7 d3 f0 f6 f0 f3 e2 c5 f0 f1 f5 f1 f2 f3  |  00040008007L0603SE015123
+f4 f5 f6 f7 f8 f9 f0 f1 f2 f3 f4 f5                                      |  456789012345
+Message Type : 0100
+BITMAP [ 3 4 7 11 12 13 14 22 23 32 35 41 42 47 48 49 55 61 123 124]
+DE[003][F006] [003000]
+DE[004][F012] [000000019500]
+DE[007][F010] [0510122009]
+DE[011][F006] [563407]
+DE[012][F006] [092009]
+DE[013][F004] [0510]
+DE[014][F004] [2506]
+DE[022][F003] [051]
+DE[023][F003] [002]
+DE[032][V006] [403254]
+DE[035][V037] [41C9C21802642777=25066000000987681802]
+DE[041][F008] [FB270391]
+DE[042][F015] [060204002512572]
+DE[047][V078] [003021CL0500    :P106a04   00400714203000150160063EB0F2D30473D020010012 163 10]
+DE[048][V025] [R1   S6              NS03]
+DE[049][F003] [076]
+DE[055][V222] [9F2608FFE99147DF78DE789F2701809F10120114A50003020000000000000000000000FF9F370405B686339F36020839950580000080009A032005269C01009F02060000000000035F2A020986820218009F1A0200769F03060000000000009F34034103029F0607A0000000043060]
+DE[061][V011] [00000040008]
+DE[123][V007] [L0603SE]
+DE[124][V015] [123456789012345]
+/home/741375/PDV/tasks/acqsrv_crt_537: line 41:  9519 Segmentation fault      (core dumped) engine $ACQSRV_CRT_XML_DIR Engine.xml acqsrv_crt ACQ acqsrv_crt
+
+^CPDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
+$ date
+Tue May 10 09:20:42 -03 2022
+PDV:741375@ip-10-123-17-88 [~/testes-unitarios/visa-crt]
