@@ -1,0 +1,170 @@
+#!/usr/bin/ksh
+
+CON="\033[1;33m"
+COFF="\033[0m"
+
+lastfile="$HOME/tmp/.jposhistory"
+
+KEYS="pos poo posip pdv pdvinac pdvip web help last"
+
+found=0
+
+## Use for loop to print all items in an array##
+for i in $KEYS
+do
+   if [ "${1}" == "${i}" ]; then
+       found=${i}
+   fi
+done
+
+if [[ "${found}" == "0" ]]; then
+    echo "Sintaxe = $0 <tipo> <ip> <porta> <ct>"
+    echo "   ** Tipos possiveis"
+    for i in $KEYS
+    do  
+        echo "    ${CON}${i}${COFF}\c"
+    done
+	lastcmd=$(tail -1 ${lastfile})
+    echo "\n\n   ** Ultimos envios"
+    echo "${CON}"
+    cat $lastfile | sort -u | awk -vLAST="${lastcmd}" '{if ( LAST == $0 ) print $0 "  <= LAST" ; else print $0;}' 
+    #echo "$(tail -1 ${lastfile}) <= ${COFF}"
+	echo "${COFF}"
+    #cp ${lastfile} ${lastfile}.bak
+    #cat ${lastfile}.bak | sort -u > ${lastfile}
+    exit 1
+fi
+
+TIPO=${1}
+if [[ "${TIPO}" == "last" ]]; then
+    TIPO=$(tail -1 ${lastfile} | awk '{print $1}')
+    MAQUINA=$(tail -1 ${lastfile} | awk '{print $2}')
+    PORTA=$(tail -1 ${lastfile} | awk '{print $3}')
+    MSG=$(tail -1 ${lastfile} | awk '{print $4}')
+else
+    MAQUINA=${2}
+    PORTA=${3}
+    MSG=${4}
+fi
+
+if [[ "${TIPO}" == "pos" ]]; then
+    CFG=${HOME}/bin/cfg/jPOS.cfg
+fi
+
+if [[ "${TIPO}" == "poo" ]]; then
+    CFG=${HOME}/bin/cfg/jPOO.cfg
+fi
+
+if [[ "${TIPO}" == "posip" ]]; then
+    CFG=${HOME}/bin/cfg/jPOSip.cfg
+fi
+
+if [[ "${TIPO}" == "pdv" ]]; then
+    CFG=${HOME}/bin/cfg/jPDVinac.cfg
+fi
+
+if [[ "${TIPO}" == "pdvip" ]]; then
+    CFG=${HOME}/bin/cfg/jPDVip.cfg
+fi
+
+if [[ "${TIPO}" == "pdvinac" ]]; then
+    CFG=${HOME}/bin/cfg/jPDVinac.cfg
+fi
+
+if [[ "${TIPO}" == "web" ]]; then
+    CFG=${HOME}/bin/cfg/jWEB.cfg
+fi
+
+if [[ "${TIPO}" == "help" ]]; then
+   echo "==============================================================================================="
+   echo "${CON} Comandos${COFF} que podem existir um Script "
+   echo "==============================================================================================="
+   echo "   ${CON}ID  <MSGTYPE>${COFF}              Informar o inicio de um novo tipo de mensagem. De acordo com a ISO possui 4 digitos"
+   echo "   ${CON}RAWDATA <CDATA>${COFF}            O conteudo de CDATA deve ser uma constante em HEXA (iniciado com $)."
+   echo "                              RAWDATA anula qualquer comando do script, pois o fluxo do script e interrompido a msg <CDATA> e enviado para diretamente para a ip/porta destino"
+   echo "   ${CON}TPDU <CDATA>${COFF}               Informar o TPDU ou HEADER da mensagem. O conteudo de CDATA deve ser em Hexa (iniciado com $)"
+   echo "                              Normalmente 1 unico comando para todo o script e suficiente, a nao ser que deseje alterar o conteudo do TPDU entre as mensagens"
+   echo "   ${CON}DELAY <SECONDS>${COFF}            Efetuar um delay em segundos entre o envio de uma msg e a proxima."
+   echo "   ${CON}!<CMD>${COFF}                     Executar um comando do SO. Entre uma Mensagem e Outra"
+   echo "                              Para referenciar um Campo/DE da mensagem e obrigatorio usar #xxx.xx# (envolvido por #) na linha com !"
+   echo "   ${CON}SENDNOWAIT${COFF}                 Efetuar o envio da mensagem formatada sem a necessidade de aguardar uma resposta"
+   echo "   ${CON}SENDRECEIVE${COFF}                Efetuar o envio da mensagem formatada e aguarda uma resposta ou timeout."
+   echo "                              Essa opcao e a default e pode ser opcional (suprimida do script)."
+   echo "                              Sempre ao encontrar um novo ID, o jPOS envia o buffer ja montado ate o momento para a porta/ip destino e aguarda a resposta por n segundos, conforme Timeout especificado."
+   echo "   ${CON}SEND${COFF}                       Idem comando SENDRECEIVE"
+   echo "   ${CON}SENDMSG${COFF}                    Idem comando SENDRECEIVE"
+   echo "   ${CON}%<VAR> <DATA>${COFF}              Armazena uma variavel interna com o conteudo informado"
+   echo "   ${CON}PRINT${COFF}                      Imprimir o conteudo de um campo ja montado para efeitos de DEBUG"
+   echo "   ${CON}<NNN> <DATA>${COFF}               Informar o dado para o campo NNN (Data Elemento)."
+   echo "   ${CON}<NNN.TT> <TAGDATA>${COFF}         Informar o conte�do de uma TAG dos campos DE48/DE47 do POS"
+   echo "                              Sempre usar 048.00 ou 047.00 para indicar o inicio da formatacao da TAG"
+   echo "\n==============================================================================================="
+   echo "Os valores ${CON}<DATA> ou <TAGDATA>${COFF} podem ser alguma das funcoes/formas abaixo que retorna os dados"
+   echo "==============================================================================================="
+   echo "   Iniciando com ${CON}$ ${COFF}            Dados em Hexadecimal (sem traducao pelo jPOS). Exemplo: 048.53 \$5303"
+   echo "   Iniciando com ${CON}! ${COFF}            Executa o script mencionada e a ultima linha de saida e devolvida para formatar no campo. Exemplo 063 !pwd"
+   echo "   Iniciando com ${CON}% ${COFF}            Obter o conteudo de uma variavel previamente armazenada. Exemplo : 041 %PV"
+   echo "   ${CON}XXXXX${COFF}                       Formatar um valor com conteudo fixo no campo"
+   echo "   ${CON}xxx.xx${COFF}                      Para obter em DE de OUTRA mensagem JA anteriormente formatada e enviada/recebida. Exemplo: 0210.38 0210.37"
+   echo "   ${CON}RAND(TAM)${COFF}                   Retorna um numero aleatorio com TAM digitos"
+   echo "   ${CON}REP(VALOR,QTD)${COFF}              Retorna uma repeticao de um VALOR por QTD vezes"
+   echo "   ${CON}GETENV(VAR)${COFF}                 Retorna o conteudo de uma variavel do Sistema Operacional"
+   echo "   ${CON}GETNSU(TAM)${COFF}                 Retorna um numero aleatorio com TAM digitos. Diferentemente de Rand pode ser combinado no script com NSUINC e NSUDEC para seguir a sequencia de NSU"
+   echo "   ${CON}NSUINC(TAM)${COFF}                 Incrementa o ultimo NSU GERADO por GETNSU, INCNSU ou DECNSU. Formatacao com TAM"
+   echo "   ${CON}DAY()${COFF}                       Retorna o Dia do ano"
+   echo "   ${CON}MONTH()${COFF}                     Retorna o Mes do ano"
+   echo "   ${CON}YEAR()${COFF}                      Retorna o Ano"
+   echo "   ${CON}HOUR()${COFF}                      Retorna o Hora"
+   echo "   ${CON}MINUTE()${COFF}                    Retorna o Minuto"
+   echo "   ${CON}SECOND()${COFF}                    Retorna o Segundo"
+   echo "   ${CON}MILISEC()${COFF}                   Retorna os milisegundos do Segundo Corrente"
+   echo "   ${CON}DATE()${COFF}                      Retorna a Data no formato especificado."
+   echo "   ${CON}WEEKYEAR()${COFF}                  Retorna o numero da semana do ano"
+   echo "   ${CON}WEEKMONTH()${COFF}                 Retorna o numero da semana do mes"
+   echo "   ${CON}DAYYEAR()${COFF}                   Retorna o numero dia no ano"
+   echo "   ${CON}WEEKDAY()${COFF}                   Retorna o numero do dia da semana"
+   echo "   ${CON}TIME(FORMAT)${COFF}                Retorna a hora no formato especificado. Exemplos de formato : HHMMSS, HHMM, MMSS"
+   echo "   ${CON}DATETIME(FORMAT)${COFF}            Retorna a data/hora no formato especificado"
+   echo "   ${CON}DATETIMEGMT(FORMAT)${COFF}         Retorna a data/hora em GMT no formato especificado"
+   echo "   ${CON}FILELINE(ARQ,LINE)${COFF}          Retorna a linha <LINE> do arquivo arq"
+   echo "   ${CON}FILELINE(ARQ,LINE,FIELDNUM)${COFF} Retorna o campo FIELDNUM da linha <LINE> do arquivo <ARQ>. Os campos deve ser separados por ;"
+   echo "   ${CON}FILEKEY(ARQ,KEY,FIELDNUM)${COFF}   Retorna o campo da linha do arquivo <ARQ> que combina com a Chave informada. Os campos deve ser separados por ;"
+   echo "   ${CON}ENCRYPTPAN(PAN)${COFF}             Criptografa o PAN em 3DES. Voce pode passar o PAN como parametro ou usar a variavel %PAN"
+   echo "   ${CON}ENCRYPTTRACK1(TRILHA1)${COFF}      Criptografa a Trilha 1 em 3DES"
+   echo "   ${CON}ENCRYPTTRACK2(TRILHA2)${COFF}      Criptografa a Trilha 2 em 3DES"
+   echo "   ${CON}VALUEMAC()${COFF}                  Gera o MAC Value (entre do DE04 e DE011) em 3DES"
+   echo "   ${CON}ENCRYPTPIN(SENHA)${COFF}           Gera a Senha criptografada em 3DES. E necessario que tenha sido previamente setada a variavel %PAN"
+   echo "   ${CON}ENCRYPTDESPIN(SENHA)${COFF}        Gera a Senha criptografada em 3DES. E necessario que tenha sido previamente setada a variavel %PAN"
+   echo "   ${CON}ENCRYPTDUKPTPIN(SENHA)${COFF}      Gera a Senha criptografada em DUKPT. E necessario que tenha sido previamente setada a variavel %PAN"
+   echo "   ${CON}ENCRYPTDUKPTDATA(DADOS)${COFF}     Gera a criptografada em DUKPT dos dados informados."
+   echo "   ${CON}GETKSN()${COFF}                    Recupera uma KSN usada para criptografia em DUKPT do PIN."
+   echo "   ${CON}GETKSNDATA()${COFF}                Recupera uma KSN  usada para criptografia em DUKPT dos Dados."
+   exit 2
+fi
+
+if [ "${MAQUINA}" == "" ]; then
+   echo "${CON}Arquivo .jpos nao informado${COFF}"
+   exit 2
+fi
+
+if [ "${PORTA}" == "" ]; then
+   echo "${CON}Arquivo .jpos nao informado${COFF}"
+   exit 2
+fi
+
+if [ "${MSG}" == "" ]; then
+   echo "${CON}Arquivo .jpos nao informado${COFF}"
+   exit 2
+fi
+
+if [ ! -f ${MSG} ]; then
+    echo "${CON}Arquivo ${MSG} nao encontrado${COFF}"
+    exit 1
+fi
+echo "${TIPO} ${MAQUINA} ${PORTA} ${MSG}" >> ${lastfile}
+
+echo "Sending MSG ${MSG} to ${MAQUINA}:${PORTA} using jPOS"
+echo "============================================================================================================="
+
+echo "/usr/java8_64/bin/java -jar ${HOME}/bin/jPOS_v2.jar -c${CFG} -s${HOME}/bin/db/ -I${MAQUINA} -P${PORTA} -m${MSG} -T30000 ${5}"
+/usr/java8_64/bin/java -jar ${HOME}/bin/jPOS_v2.jar -c${CFG} -s${HOME}/bin/db/ -I${MAQUINA} -P${PORTA} -m${MSG} -T30000 ${5}

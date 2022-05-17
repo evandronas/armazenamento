@@ -1,0 +1,13 @@
+###########################################
+# SCRIPT DE RESPOSTA DA ALELO
+###########################################
+
+IF GETID = 1200 THEN CALL alelo_1200.jIssuer
+IF GETID = 1400 THEN CALL alelo_1400.jIssuer
+IF GETID = 1202 THEN CALL alelo_1202.jIssuer
+IF GETID = 1420 THEN CALL alelo_1420.jIssuer
+IF GETID = 1800 THEN CALL alelo_1800.jIssuer
+
+GOTO FIM
+
+:FIM

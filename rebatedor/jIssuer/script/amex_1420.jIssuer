@@ -1,0 +1,33 @@
+#####################################################################
+# SCRIPT PARA RESPONDER UMA MENSAGEM 1420 - AMEX CREDITO
+# HISTORICO : VERSAO INICIAL - 30.05.2020
+#####################################################################
+FIELDS M=2,3,4,11,12,24,25,31,32,37,42,49,56
+
+#                           #                 #
+# 1420 => 2 3 4 11 12 24 25 26 31 32 37    42 43 49 56
+# 1430 => 2 3 4 11 12          31 32 37 39 42    49
+
+#####################################################################
+# INICIALIZACAO DA MENSAGEM
+#####################################################################
+INITMSG 1430
+
+PUTFIELD 2 GETFIELD(02)
+PUTFIELD 3 GETFIELD(03)
+PUTFIELD 4 GETFIELD(04)
+PUTFIELD 11 GETFIELD(11)
+PUTFIELD 12 GETFIELD(12)
+PUTFIELD 31 GETFIELD(31)
+PUTFIELD 32 GETFIELD(32)
+PUTFIELD 37 GETFIELD(37)
+PUTFIELD 39 000
+PUTFIELD 42 GETFIELD(42)
+PUTFIELD 49 GETFIELD(49)
+
+:SENDMSG
+PUTLOG "*********** ANTES DO SEND ***********"
+PRINTVARS
+PRINTFIELDS IN
+PRINTFIELDS OUT
+SENDMSG

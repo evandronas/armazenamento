@@ -1,0 +1,21 @@
+#####################################################################
+# SCRIPT PARA RESPONDER UMA MENSAGEM 0810 - CRT VAN
+# HISTORICO : VERSAO INICIAL - 01.06.2020
+#######################]#############################################
+FIELDS M=7,11,33,70
+
+# 0800 => 7 11 33    70
+# 0810 => 7 11 33 39 70
+
+#####################################################################
+# INICIALIZACAO DA MENSAGEM
+#####################################################################
+INITMSG 0810
+
+PUTFIELD 7  GETFIELD(07)
+PUTFIELD 11 GETFIELD(11)
+PUTFIELD 32 GETFIELD(33)
+PUTFIELD 39 00
+PUTFIELD 70 GETFIELD(70)
+
+SENDMSG

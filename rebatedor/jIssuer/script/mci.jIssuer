@@ -1,0 +1,11 @@
+###########################################
+# SCRIPT DE RESPOSTA DA MASTERCARD CREDITO
+###########################################
+
+
+IF GETID = 0100 THEN CALL mci_0100.jIssuer
+IF GETID = 0400 THEN CALL mci_0400.jIssuer
+IF GETID = 0800 THEN CALL mci_0800.jIssuer
+GOTO FIM
+
+:FIM

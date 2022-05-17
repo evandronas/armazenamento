@@ -1,0 +1,17 @@
+#####################################################################
+# SCRIPT PARA RESPONDER UMA MENSAGEM 0800 - DINERS/GREENCARD
+# HISTORICO : VERSAO INICIAL - 30.05.2020
+#####################################################################
+FIELDS M=7,11,32,70
+
+INITMSG 0810
+
+PUTFIELD 7 GETFIELD(07)
+PUTFIELD 11 GETFIELD(11)
+PUTFIELD 32 GETFIELD(32)
+PUTFIELD 33 GETFIELD(33)
+PUTFIELD 39 00
+PUTFIELD 70 GETFIELD(70)
+
+:SEND
+SENDMSG

@@ -1,0 +1,13 @@
+###########################################
+# SCRIPT DE RESPOSTA DA SODEXO
+###########################################
+
+IF GETID = 0200 THEN CALL sodexo_0200.jIssuer
+IF GETID = 0202 THEN CALL sodexo_0202.jIssuer
+IF GETID = 0400 THEN CALL sodexo_0400.jIssuer
+IF GETID = 0402 THEN CALL sodexo_0402.jIssuer
+IF GETID = 0420 THEN CALL sodexo_0420.jIssuer
+IF GETID = 0800 THEN CALL sodexo_0800.jIssuer
+GOTO FIM
+
+:FIM

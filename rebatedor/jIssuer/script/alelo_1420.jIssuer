@@ -1,0 +1,33 @@
+#####################################################################
+# SCRIPT PARA RESPONDER UMA MENSAGEM 1420 - ALELO VOUCHER
+# HISTORICO : VERSAO INICIAL - 30.05.2020
+#####################################################################
+FIELDS M=2,3,4,7,11,12,14,19,22,32,41,42,49,53,60,61,64
+
+#         
+# 1420 => 2 3 4 7 11 12 14 19 22 32    41 42    49 53 60 61 64
+# 1430 =>   3 4 7 11 12 14       32 39 41 42 48 49          64 
+
+#####################################################################
+# INICIALIZACAO DA MENSAGEM
+#####################################################################
+INITMSG 1430
+
+PUTFIELD 3 GETFIELD(03)
+PUTFIELD 4 GETFIELD(04)
+PUTFIELD 7 GETFIELD(07)
+PUTFIELD 11 GETFIELD(11)
+PUTFIELD 12 GETFIELD(12)
+PUTFIELD 14 GETFIELD(14)
+PUTFIELD 32 GETFIELD(32)
+PUTFIELD 39 00
+PUTFIELD 41 GETFIELD(41)
+PUTFIELD 42 GETFIELD(42)
+PUTFIELD 49 GETFIELD(49)
+#
+# 048, 054 e 064 - VALORES FIXOS
+PUTFIELD 48 *NRR015000000000012345
+PUTFIELD 64 $A149C61A00000000
+
+:SENDMSG
+SENDMSG

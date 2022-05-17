@@ -1,0 +1,23 @@
+#####################################################################
+# SCRIPT PARA RESPONDER UMA MENSAGEM 0810 - FININVEST
+# HISTORICO : VERSAO INICIAL - 01.06.2020
+#######################]#############################################
+FIELDS M=7,11,32,37,70,127
+
+#####################################################################
+# INICIALIZACAO DA MENSAGEM
+#####################################################################
+INITMSG 0810
+
+PUTLOG "*** ECHO TEST ***"
+
+PUTFIELD 7  GETFIELD(07)
+PUTFIELD 11 GETFIELD(11)
+PUTFIELD 32 GETFIELD(32)
+PUTFIELD 37 GETFIELD(37)
+PUTFIELD 39 00
+PUTFIELD 70 GETFIELD(70)
+PUTFIELD 100 GETFIELD(100)
+PUTFIELD 127 GETFIELD(127)
+
+SENDMSG

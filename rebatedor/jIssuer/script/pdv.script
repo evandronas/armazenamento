@@ -1,0 +1,9 @@
+#########################################
+# SCRIPT DE RESPOSTA PARA O PDV DA SONDA
+#########################################
+IF GETID = 0600 THEN CALL pdv_0600.script
+
+PUTLOG "*** MSG NAO ESPERADA ***"
+GOTO FIM
+
+:FIM

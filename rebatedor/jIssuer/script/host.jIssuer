@@ -1,0 +1,12 @@
+###########################################
+# SCRIPT DE RESPOSTA DA HOST
+###########################################
+
+IF GETID = 0100 THEN CALL host_0100.jIssuer
+IF GETID = 9160 THEN CALL host_9160.jIssuer
+IF GETID = 1624 THEN CALL host_1634.jIssuer
+IF GETID = 0800 THEN CALL host_0800.jIssuer
+
+GOTO FIM
+
+:FIM

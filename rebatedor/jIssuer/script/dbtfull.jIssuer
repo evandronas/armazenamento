@@ -1,0 +1,10 @@
+###########################################
+# SCRIPT DE RESPOSTA DA DBT FULL
+###########################################
+
+IF GETID = 0200 THEN CALL dbtfull_0200.jIssuer
+IF GETID = 0420 THEN CALL dbtfull_0420.jIssuer
+IF GETID = 0800 THEN CALL dbtfull_0800.jIssuer
+GOTO FIM
+
+:FIM

@@ -1,0 +1,9 @@
+#####################################################################
+# SCRIPT PARA RESPONDER UMA MENSAGEM 202 - VOUCHER
+# HISTORICO : VERSAO INICIAL - 30.05.2020
+#####################################################################
+FIELDS M=3,4,7,11,22,32,39,42,49,127
+
+PUTLOG "NO RESPONSE FOR 202 FROM VOUCHER"
+
+:TIMEOUT

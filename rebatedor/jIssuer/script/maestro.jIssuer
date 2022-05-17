@@ -1,0 +1,10 @@
+###########################################
+# SCRIPT DE RESPOSTA DA MASTERCARD DEBITO
+###########################################
+
+IF GETID = 0200 THEN CALL maestro_0200.jIssuer
+IF GETID = 0420 THEN CALL maestro_0420.jIssuer
+IF GETID = 0800 THEN CALL maestro_0800.jIssuer
+GOTO FIM
+
+:FIM

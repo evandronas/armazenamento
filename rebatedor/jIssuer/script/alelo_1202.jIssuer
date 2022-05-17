@@ -1,0 +1,9 @@
+#####################################################################
+# SCRIPT PARA RESPONDER UMA MENSAGEM 1202 - ALELO VOUCHER
+# HISTORICO : VERSAO INICIAL - 30.05.2020
+#####################################################################
+FIELDS M=2,3,4,7,11,12,19,22,32,39,41,42,43,49,53,60,61,64
+
+PUTLOG "NO RESPONSE FOR 1202 FROM ALELO"
+
+:TIMEOUT

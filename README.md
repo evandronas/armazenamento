@@ -214,4 +214,14 @@ $ swcheck pdv | grep 8510
    PDV => P4801_INACX_537      => CMMT.localhost.8510            => [ACTIVE LISTEN]
 PDV:741375@ip-10-123-17-88 [~]
 
+rebatedor
+issuer.sh VISA {porta}
+issuer.sh VISA 6669
+
 $ go pdv localhost 8510 visa_mag_desfazimento_confpreaut.jpos
+
+   PDV => route_CRT_237        => CMMT.soxx105cto.31123          => [ATTEMPTING CONNECTION]
+   CRT => route_pdv77_537      => AWSJPDVCRT.soxx105cto.17123    => [ACTIVE LISTEN]
+passar pela primeira porta do inac
+   PDV => P4801_INACX_437      => CMMT.soxx105cto.20223          => [ACTIVE LISTEN]
+

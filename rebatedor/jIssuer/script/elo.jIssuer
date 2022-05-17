@@ -1,0 +1,12 @@
+###########################################
+# SCRIPT DE RESPOSTA DA ELO FULL
+###########################################
+
+IF GETID = 0100 THEN CALL elo_0100.jIssuer
+IF GETID = 0400 THEN CALL elo_0400.jIssuer
+IF GETID = 0420 THEN CALL elo_0420.jIssuer
+IF GETID = 0800 THEN CALL elo_0800.jIssuer
+
+GOTO FIM
+
+:FIM

@@ -1,0 +1,10 @@
+###########################################
+# SCRIPT DE RESPOSTA DA CRT FULL
+###########################################
+
+IF GETID = 0100 THEN CALL crtfull_0100.jIssuer
+IF GETID = 0420 THEN CALL crtfull_0420.jIssuer
+IF GETID = 0800 THEN CALL crtfull_0800.jIssuer
+GOTO FIM
+
+:FIM

@@ -1,0 +1,2 @@
+/usr/java8_64/bin/java -jar ${HOME}/bin/jIssuer.jar ${@}
+

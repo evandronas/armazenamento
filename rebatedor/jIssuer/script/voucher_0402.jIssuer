@@ -1,0 +1,9 @@
+#####################################################################
+# SCRIPT PARA RESPONDER UMA MENSAGEM 402 - VOUCHER
+# HISTORICO : VERSAO INICIAL - 30.05.2020
+#####################################################################
+FIELDS M=3,4,7,11,22,32,39,42,49,127
+
+PUTLOG "NO RESPONSE FOR 402 FROM VOUCHER"
+
+:TIMEOUT

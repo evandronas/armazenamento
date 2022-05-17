@@ -1,0 +1,11 @@
+###########################################
+# SCRIPT DE RESPOSTA DA WQ3
+###########################################
+
+IF GETID = 0100 THEN CALL wq3_0100.jIssuer
+IF GETID = 0600 THEN CALL wq3_0600.jIssuer
+IF GETID = 0800 THEN CALL wq3_0800.jIssuer
+
+GOTO FIM
+
+:FIM

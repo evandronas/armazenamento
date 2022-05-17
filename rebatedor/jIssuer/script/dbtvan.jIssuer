@@ -1,0 +1,10 @@
+###########################################
+# SCRIPT DE RESPOSTA DA DBT VAN
+###########################################
+
+IF GETID = 0100 THEN CALL dbtvan_0100.jIssuer
+IF GETID = 0420 THEN CALL dbtvan_0420.jIssuer
+IF GETID = 0800 THEN CALL dbtvan_0800.jIssuer
+GOTO FIM
+
+:FIM

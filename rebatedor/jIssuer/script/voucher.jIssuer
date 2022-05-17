@@ -1,0 +1,14 @@
+###########################################
+# SCRIPT DE RESPOSTA DE VOUCHER
+###########################################
+
+IF GETID = 0200 THEN CALL voucher_0200.jIssuer
+IF GETID = 0202 THEN CALL voucher_0202.jIssuer
+IF GETID = 0402 THEN CALL voucher_0402.jIssuer
+IF GETID = 0400 THEN CALL voucher_0400.jIssuer
+IF GETID = 0420 THEN CALL voucher_0420.jIssuer
+IF GETID = 0800 THEN CALL voucher_0800.jIssuer
+
+GOTO FIM
+
+:FIM

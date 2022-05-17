@@ -1,0 +1,9 @@
+###########################################
+# SCRIPT DE RESPOSTA DA VISA CREDITO
+###########################################
+
+IF GETID = 0100 THEN CALL visa_0100.jIssuer
+IF GETID = 0400 THEN CALL visa_0400.jIssuer
+GOTO FIM
+
+:FIM

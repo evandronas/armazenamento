@@ -1,0 +1,153 @@
+###################################################
+# jIssuer Script File
+# Testes Funcionais Front-End PDV
+# Venda Normal
+# MsgType 0600/0610
+# Autor : Rcamargo
+###################################################
+## Header: [2020/03/19 00:33:02 O 10.234.176.208 60fffffffff8f2f3f7f3f7f0f7f8f5f7f1f6f1f8000100f0f6] 
+## MsgType: [0600] Bitmap  7 11 12 13 42 125 127 
+## DE  [007] [F010] [0229003302]
+## DE  [011] [F006] [800866]
+## DE  [012] [F006] [003302]
+## DE  [013] [F004] [0229]
+## DE  [042] [F015] [823737078571618]
+## DE  [125] [V009] [009000105934]
+## DE  [127] [V009] [009003800866]
+
+## Header: [2020/03/19 00:31:31 I 10.59.150.83 6001006844f8f2f3f7f8f3f0f7f8f5f7f1f3f8f3111050f0f6] 
+## MsgType: [0610] Bitmap  7 11 12 13 39 42 123 125 127 
+## DE  [007] [F010] [0319033131]
+## DE  [011] [F006] [057344]
+## DE  [012] [F006] [003131]
+## DE  [013] [F004] [0314]
+## DE  [039] [F002] [77]
+## DE  [042] [F015] [823783078571383]
+## DE  [123] [V007] [007L0603DI]
+## DE  [125] [V006] [006995507]
+## DE  [127] [V009] [009003057344]
+
+#
+# BITS OPCIONAIS DA VENDA
+#
+# IF GETFIELD(06)  != NULL       PUTLOG "========> BIT 06 PRESENTE - Amount, Cardholder Billing "
+# IF GETFIELD(10)  != NULL       PUTLOG "========> BIT 10 PRESENTE - Conversion Rate Cardholder Billing "
+# IF GETFIELD(15)  != NULL       PUTLOG "========> BIT 15 PRESENTE - Date Settlement "
+# IF GETFIELD(16)  != NULL       PUTLOG "========> BIT 16 PRESENTE - Date Conversion "
+# IF GETFIELD(14)  != NULL       PUTLOG "========> BIT 14 PRESENTE - Date Expiration "
+# IF GETFIELD(23)  != NULL       PUTLOG "========> BIT 23 PRESENTE - Card Sequence Number "
+# IF GETFIELD(35)  != NULL       PUTLOG "========> BIT 35 PRESENTE - Track 2 "
+# IF GETFIELD(55)  != NULL       PUTLOG "========> BIT 55 - Chip Data PRESENTE "
+# IF GETFIELD(112) != NULL       PUTLOG "========> BIT 112 PRESENTE "
+
+#
+# VALIDACAO DO BIT 07
+#
+# IF GETFIELD(7,1,2) < "01"     PUTLOG "BIT 7 - MES MENOR QUE 01"
+# IF GETFIELD(7,1,2) > "12"     PUTLOG "BIT 7 - MES MAIOR QUE 12"
+# IF GETFIELD(7,3,2) < "01"     PUTLOG "BIT 7 - DIA MENOR QUE 01"
+# IF GETFIELD(7,3,2) > "31"     PUTLOG "BIT 7 - DIA MAIOR QUE 31"
+# IF GETFIELD(7,5,2) < "00"     PUTLOG "BIT 7 - HORA MENOR QUE 00"
+# IF GETFIELD(7,5,2) > "23"     PUTLOG "BIT 7 - HORA MAIOR QUE 23"
+# IF GETFIELD(7,7,2) < "00"     PUTLOG "BIT 7 - MINUTO MENOR QUE 00"
+# IF GETFIELD(7,7,2) > "59"     PUTLOG "BIT 7 - MINUTO MAIOR QUE 59"
+# IF GETFIELD(7,9,2) < "00"     PUTLOG "BIT 7 - SEGUNDO MENOR QUE 00"
+# IF GETFIELD(7,9,2) > "59"     PUTLOG "BIT 7 - SEGUNDO MAIOR QUE 23"
+
+FIELDS M=7,11,12,13,42,125,127
+
+INITMSG 0610
+
+PUTFIELD 07 GETFIELD(07)
+PUTFIELD 11 GETFIELD(11)
+PUTFIELD 12 GETFIELD(12)
+PUTFIELD 13 GETFIELD(13)
+PUTFIELD 39 00
+PUTFIELD 42 GETFIELD(42)
+PUTFIELD 123 L0603DI
+PUTFIELD 125 GETFIELD(125)
+PUTFIELD 127 GETFIELD(127)
+
+###################################################################
+# Na mensagem de resposta a uma consulta de status de transação (sonda) -
+# 00 - transação confirmada;
+# 05 - pagamento com saldo Voucher não foi aceito pelo operador;
+# 09 - se transação em andamento (espera de resposta);
+# 77 - se pendente de confirmação;
+# 78 - transação cancelada;
+# 80 - transação não encontrada;
+# 86 - transação desfeita.
+# Na mensagem de resposta a uma requisição de transação Compre&Saque (Cashback):
+# 00 – aprovação total (compra + saque);
+# 87 – aprovação apenas do valor da compra (saque não autorizado).
+# Na mensagem de resposta a uma requisição de transação Voucher:
+# 00 – aprovação total
+# 87 – aprovação usando o saldo disponível no cartão
+###################################################################
+
+IF GETFIELD(123) != NULL  PUTFIELD 123 GETFIELD(123)
+IF GETFIELD(42,15,1) = "1" THEN GOTO NEG05
+IF GETFIELD(42,15,1) = "2" THEN GOTO NEG09
+IF GETFIELD(42,15,1) = "3" THEN GOTO NEG77
+IF GETFIELD(42,15,1) = "4" THEN GOTO NEG78
+IF GETFIELD(42,15,1) = "5" THEN GOTO NEG80
+IF GETFIELD(42,15,1) = "6" THEN GOTO NEG86
+IF GETFIELD(42,15,1) = "7" THEN GOTO NEG87
+PUTLOG " *** VALOR PARA APROVAR *** "
+GOTO SEND
+
+:NEG05
+PUTLOG " *** VALOR PARA NEGAR 05 *** "
+PUTFIELD 39 05
+GOTO SEND
+
+:NEG09
+PUTLOG " *** VALOR PARA NEGAR 09 *** "
+PUTFIELD 39 09
+GOTO SEND
+
+:NEG77
+PUTLOG " *** VALOR PARA NEGAR 77 *** "
+PUTFIELD 39 77
+GOTO SEND
+
+:NEG78
+PUTLOG " *** VALOR PARA NEGAR 78 *** "
+PUTFIELD 39 78
+GOTO SEND
+
+:NEG80
+PUTLOG " *** VALOR PARA NEGAR 80 *** "
+PUTFIELD 39 80
+GOTO SEND
+
+:NEG86
+PUTLOG " *** VALOR PARA NEGAR 86 *** "
+PUTFIELD 39 86
+GOTO SEND
+
+:NEG87
+PUTLOG " *** VALOR PARA NEGAR 87 *** "
+PUTFIELD 39 87
+GOTO SEND
+
+## :TIMEOUT
+## PUTLOG " *** VALOR PARA TIMEOUT *** "
+## GOTO NOSEND
+## 
+## :TARDIA
+## PUTLOG " *** VALOR PARA TARDIA *** "
+## DELAY 20
+## GOTO SEND
+## 
+## :NEGTARDIA
+## PUTLOG " *** VALOR PARA NEGADA TARDIA *** "
+## PUTFIELD 39 05
+## DELAY 20
+## GOTO SEND
+
+:SEND
+SENDMSG
+
+:NOSEND
+# EOF

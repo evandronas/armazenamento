@@ -1,0 +1,16 @@
+#####################################################################
+# SCRIPT PARA RESPONDER UMA MENSAGEM 1800 - ALELO VOUCHER
+# HISTORICO : VERSAO INICIAL - 30.05.2020
+#####################################################################
+FIELDS M=7,12,19,32
+
+INITMSG 1810
+
+PUTFIELD 7 GETFIELD(07)
+PUTFIELD 12 GETFIELD(12)
+PUTFIELD 19 GETFIELD(19)
+PUTFIELD 32 GETFIELD(32)
+PUTFIELD 39 00
+
+:SEND
+SENDMSG

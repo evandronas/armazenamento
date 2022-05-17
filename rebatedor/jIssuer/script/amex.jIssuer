@@ -1,0 +1,11 @@
+###########################################
+# SCRIPT DE RESPOSTA DA AMEX CREDITO
+###########################################
+
+IF GETID = 1100 THEN CALL amex_1100.jIssuer
+IF GETID = 1420 THEN CALL amex_1420.jIssuer
+IF GETID = 1804 THEN CALL amex_1804.jIssuer
+
+GOTO FIM
+
+:FIM

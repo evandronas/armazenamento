@@ -1,0 +1,11 @@
+###########################################
+# SCRIPT DE RESPOSTA DA TICKET CHIP
+###########################################
+
+IF GETID = 0200 THEN CALL tkchip_0200.jIssuer
+IF GETID = 0202 THEN CALL tkchip_0202.jIssuer
+IF GETID = 0420 THEN CALL tkchip_0420.jIssuer
+IF GETID = 0800 THEN CALL tkchip_0800.jIssuer
+GOTO FIM
+
+:FIM
