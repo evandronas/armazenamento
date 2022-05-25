@@ -225,3 +225,33 @@ $ go pdv localhost 8510 visa_mag_desfazimento_confpreaut.jpos
 passar pela primeira porta do inac
    PDV => P4801_INACX_437      => CMMT.soxx105cto.20223          => [ACTIVE LISTEN]
 
+CRTO
+shccmd list
+shccmd list 05 2002202070
+shccmd force 05 2002202070 up
+
+Analisar configuração de portas
+===============================
+cd /home/swoper23/DBT/shell/swfmt3_iss
+cat swfmt3j_pdv_aws_537
+...
+export INSTITUTIONID=05
+export NETWORKID=7035370201
+...
+select * from shcbin where networkid = 7035370201
+Olha o mailbox no cfg, busca no shcbin e verifica o ID para buscar a task que le a mensagem que chegou
+
+                Acquirer
+------------------------------------------------------           issuer
+                                                      -----------------------------
+porta -> mainbox -> formatador -> shc (Autorizador) -> porta -> formatador -> porta
+
+Ligar Trace
+===========
+otracecmd list
+otracecmd help
+otracecmd set swfmt3j_pdv_aws_537 DEBUG
+
+mbportcmd
+
+https://web.microsoftstream.com/embed/channel/426ac290-3bf5-4866-833e-92f9cfcae686?app=microsoftteams&sort=undefined&l=en-us#
